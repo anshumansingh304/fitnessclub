@@ -312,7 +312,8 @@ a {
 #trainers,
 #membership,
 #contact,
-#video {
+#video,
+#diet {
   scroll-margin-top: 88px;
 }
 
@@ -448,10 +449,40 @@ a {
   background: linear-gradient(160deg, #040102, #290309 44%, #7a0814 68%, #050102);
 }
 
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.video-card {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(150deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025)),
+    rgba(10, 3, 5, 0.72);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.32);
+  backdrop-filter: blur(14px);
+}
+
+.video-card h3 {
+  margin: 0;
+  color: var(--white);
+  font-size: 1.35rem;
+}
+
+.video-card p {
+  margin: 0;
+  color: var(--smoke);
+  line-height: 1.55;
+}
+
 .video-shell {
   position: relative;
   overflow: hidden;
-  width: min(1060px, 100%);
+  width: 100%;
   aspect-ratio: 16 / 9;
   margin: 0 auto;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -652,6 +683,64 @@ a {
   color: var(--rose);
 }
 
+.diet {
+  background:
+    radial-gradient(circle at 16% 16%, rgba(255, 59, 48, 0.28), transparent 34%),
+    linear-gradient(140deg, #060203, #2c0509 38%, #810914 68%, #050102);
+}
+
+.diet-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.diet-grid article {
+  min-height: 430px;
+  padding: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background:
+    linear-gradient(145deg, rgba(255, 59, 48, 0.16), rgba(0, 0, 0, 0.48)),
+    rgba(10, 3, 5, 0.76);
+  box-shadow: 0 26px 80px rgba(0, 0, 0, 0.34);
+  backdrop-filter: blur(14px);
+}
+
+.diet-grid span {
+  color: var(--flare);
+  font-size: 0.82rem;
+  font-weight: 950;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.diet-grid h3 {
+  margin: 16px 0 14px;
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  line-height: 1;
+}
+
+.diet-grid p,
+.diet-grid li,
+.source-note {
+  color: var(--smoke);
+  line-height: 1.6;
+}
+
+.diet-grid ul {
+  display: grid;
+  gap: 10px;
+  margin: 20px 0 0;
+  padding-left: 18px;
+}
+
+.source-note {
+  margin: 24px auto 0;
+  max-width: 820px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
 .contact {
   display: grid;
   grid-template-columns: 0.85fr 1fr;
@@ -763,10 +852,12 @@ a {
   .stats,
   .intro,
   .split,
+  .video-grid,
   .trainer-grid,
   .pricing-grid,
   .contact,
-  .testimonial-grid {
+  .testimonial-grid,
+  .diet-grid {
     grid-template-columns: 1fr;
   }
 
@@ -814,7 +905,9 @@ a {
 
   .stats,
   .equipment-grid,
-  .gallery {
+  .gallery,
+  .video-grid,
+  .diet-grid {
     grid-template-columns: 1fr;
   }
 
