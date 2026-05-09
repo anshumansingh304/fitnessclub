@@ -485,6 +485,216 @@ a {
   }
 }
 
+.iron-animation {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.8fr) minmax(320px, 1.2fr);
+  gap: clamp(28px, 6vw, 80px);
+  align-items: center;
+  padding: clamp(54px, 7vw, 92px) clamp(20px, 6vw, 80px);
+  background:
+    radial-gradient(circle at 70% 50%, rgba(255, 59, 48, 0.24), transparent 34%),
+    linear-gradient(135deg, #050102, #2a0408 48%, #070203);
+  border-block: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.iron-copy h2 {
+  max-width: 640px;
+  margin: 0;
+  font-size: clamp(2.4rem, 5vw, 5.6rem);
+  line-height: 0.92;
+  text-wrap: balance;
+}
+
+.iron-stage {
+  position: relative;
+  display: grid;
+  min-height: 300px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.08), transparent),
+    rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 0 80px rgba(255, 59, 48, 0.14), 0 30px 100px rgba(0, 0, 0, 0.42);
+}
+
+.iron-stage::before,
+.iron-stage::after {
+  content: "";
+  position: absolute;
+  inset: auto 12% 50%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 59, 48, 0.78), transparent);
+  filter: drop-shadow(0 0 12px rgba(255, 59, 48, 0.8));
+}
+
+.iron-stage::after {
+  transform: rotate(90deg);
+  opacity: 0.38;
+}
+
+.dumbbell {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.58));
+}
+
+.dumbbell span {
+  position: relative;
+  width: 42px;
+  height: 78px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.5), transparent 34% 66%, rgba(0, 0, 0, 0.26)),
+    linear-gradient(180deg, #ffffff 0%, #d8d8d8 26%, #787878 50%, #eeeeee 70%, #4d4d4d 100%);
+  box-shadow: inset 6px 0 10px rgba(255, 255, 255, 0.3), inset -8px 0 14px rgba(0, 0, 0, 0.42), 0 14px 24px rgba(0, 0, 0, 0.4);
+}
+
+.dumbbell span:first-child {
+  animation: leftWeightBreak 2.8s cubic-bezier(0.2, 0.82, 0.2, 1) infinite;
+}
+
+.dumbbell span:last-child {
+  animation: rightWeightBreak 2.8s cubic-bezier(0.2, 0.82, 0.2, 1) infinite;
+}
+
+.dumbbell span::before,
+.dumbbell span::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  bottom: 8px;
+  width: 8px;
+  background: linear-gradient(180deg, #ffffff, #8a8a8a 48%, #222);
+}
+
+.dumbbell span::before {
+  left: -9px;
+}
+
+.dumbbell span::after {
+  right: -9px;
+}
+
+.dumbbell i {
+  display: block;
+  width: clamp(110px, 20vw, 190px);
+  height: 18px;
+  margin-inline: 8px;
+  background:
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.28) 0 4px, transparent 4px 8px),
+    linear-gradient(180deg, #ffffff 0%, #d7d7d7 28%, #777 48%, #f4f4f4 68%, #565656 100%);
+  border-radius: 999px;
+  box-shadow: inset 0 3px 3px rgba(255, 255, 255, 0.5), inset 0 -4px 4px rgba(0, 0, 0, 0.46);
+  animation: handleBreak 2.8s cubic-bezier(0.2, 0.82, 0.2, 1) infinite;
+}
+
+.dumbbell-small {
+  left: 7%;
+  top: 28%;
+  transform: scale(0.72) rotate(-13deg);
+  animation: dumbbellLeft 3.2s ease-in-out infinite;
+}
+
+.dumbbell-main {
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -8%) scale(1);
+  animation: dumbbellPower 2.8s ease-in-out infinite;
+}
+
+.dumbbell-large {
+  right: 4%;
+  top: 32%;
+  transform: scale(1.18) rotate(12deg);
+  animation: dumbbellRight 3.5s ease-in-out infinite;
+}
+
+.dumbbell-small span,
+.dumbbell-small i {
+  animation-delay: 140ms;
+}
+
+.dumbbell-large span,
+.dumbbell-large i {
+  animation-delay: 280ms;
+}
+
+@keyframes dumbbellLeft {
+  0%,
+  100% {
+    transform: scale(0.72) rotate(-13deg) translateY(0);
+  }
+
+  50% {
+    transform: scale(0.78) rotate(-8deg) translateY(-16px);
+  }
+}
+
+@keyframes dumbbellRight {
+  0%,
+  100% {
+    transform: scale(1.18) rotate(12deg) translateY(0);
+  }
+
+  50% {
+    transform: scale(1.25) rotate(7deg) translateY(-18px);
+  }
+}
+
+@keyframes dumbbellPower {
+  0%,
+  100% {
+    transform: translate(-50%, -8%) scale(1);
+  }
+
+  48%,
+  62% {
+    transform: translate(-50%, -8%) scale(1.1);
+  }
+}
+
+@keyframes leftWeightBreak {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  44%,
+  60% {
+    transform: translateX(-30px) rotate(-9deg);
+  }
+}
+
+@keyframes rightWeightBreak {
+  0%,
+  100% {
+    transform: translateX(0) rotate(0deg);
+  }
+
+  44%,
+  60% {
+    transform: translateX(30px) rotate(9deg);
+  }
+}
+
+@keyframes handleBreak {
+  0%,
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+
+  44%,
+  60% {
+    transform: scaleX(0.82);
+    opacity: 0.78;
+  }
+}
+
 .split {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(320px, 0.86fr);
@@ -1244,6 +1454,7 @@ a {
 
   .stats,
   .intro,
+  .iron-animation,
   .split,
   .video-grid,
   .trainer-grid,
@@ -1265,6 +1476,10 @@ a {
   .media-frame,
   .media-frame img {
     min-height: 360px;
+  }
+
+  .iron-stage {
+    min-height: 260px;
   }
 
   .price-card.featured {
@@ -1322,5 +1537,30 @@ a {
 
   .button {
     width: 100%;
+  }
+
+  .dumbbell i {
+    width: 100px;
+  }
+
+  .dumbbell span {
+    width: 26px;
+    height: 58px;
+  }
+
+  .dumbbell-small {
+    left: -18px;
+    top: 22%;
+    transform: scale(0.58) rotate(-13deg);
+  }
+
+  .dumbbell-main {
+    transform: translate(-50%, -8%) scale(0.78);
+  }
+
+  .dumbbell-large {
+    right: -28px;
+    top: 34%;
+    transform: scale(0.82) rotate(12deg);
   }
 }
