@@ -12,6 +12,26 @@ const syncHeader = () => {
 syncHeader();
 window.addEventListener("scroll", syncHeader, { passive: true });
 
+const revealTargets = document.querySelectorAll(
+  ".section-heading, .stats div, .program-list article, .equipment-grid article, .trainer-card, .price-card, .video-card, .testimonial-grid article, .diet-grid article, .contact-form, .contact-copy",
+);
+
+revealTargets.forEach((target) => target.classList.add("reveal"));
+
+const revealObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in-view");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },
+  { threshold: 0.16 },
+);
+
+revealTargets.forEach((target) => revealObserver.observe(target));
+
 navToggle.addEventListener("click", () => {
   const isOpen = nav.classList.toggle("open");
   header.classList.toggle("nav-open", isOpen);
